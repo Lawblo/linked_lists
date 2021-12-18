@@ -5,11 +5,8 @@ require_relative 'linked_list'
 
 a = LinkedList.new
 
-(0..3).each {|i| a.append(i) }
+(1..3).each {|i| a.append(i) }
+
+a.remove_at(1)
+
 p a
-
-a.pop
-
-p a
-
-p a.find(2)

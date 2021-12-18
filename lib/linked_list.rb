@@ -90,12 +90,46 @@ class LinkedList
   end
 
   # represent your LinkedList objects as strings, so you can print them out and preview them in the console.
-  # The format should be: ( value ) -> ( value ) -> ( value ) -> nil
-  def to_s; end
+  # Format: ( value ) -> ( value ) -> ( value ) -> nil
+  def to_s
+    node = head.next_node
+    while node
+      print "( #{node.to_string} ) -> "
+      node = node.next_node
+    end
+    puts 'nil'
+  end
 
   # inserts a new node with the provided value at the given index.
-  def insert_at(value, index) end
+  def insert_at(value, index)
+    insert_index = 0
+    node = head
+    until insert_index == index
+      return puts 'index out of bounds' if node.next_node.nil?
+
+      insert_index += 1
+      node = node.next_node
+    end
+    return node.next_node = Node.new(value) if node.next_node.nil?
+
+    temp = node.next_node
+    node.next_node = Node.new(value)
+    node.next_node.next_node = temp
+  end
 
   # removes the node at the given index.
-  def remove_at(index) end
+  def remove_at(index)
+    remove_index = 0
+    node = head
+    until remove_index == index
+      return puts 'index out of bounds' if node.next_node.nil?
+
+      remove_index += 1
+      node = node.next_node
+    end
+    return if node.next_node.nil?
+
+    temp = node.next_node.next_node
+    node.next_node = temp
+  end
 end

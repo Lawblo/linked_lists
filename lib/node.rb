@@ -8,4 +8,8 @@ class Node
     @value = value
     @next_node = nil
   end
+
+  def to_string
+    value.to_s
+  end
 end
